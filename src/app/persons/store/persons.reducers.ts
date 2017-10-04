@@ -9,11 +9,15 @@ export interface PersonsFeatureState {
 export interface State {
 	searchQuery: string;
 	searchResults: Person[];
+	selectedPersonId: number;
+	selectedPerson: Person;
 }
 
 const initialState: State = {
 	searchQuery: '',
-	searchResults: []
+	searchResults: [],
+	selectedPersonId: -1,
+	selectedPerson: null
 };
 
 export function personsReducer(state: State = initialState, action: PersonsActions.PersonsActions) {
@@ -29,6 +33,16 @@ export function personsReducer(state: State = initialState, action: PersonsActio
 				...state,
 				searchResults: action.payload
 			};
+		case PersonsActions.SELECT:
+			return {
+				...state,
+				selectedPersonId: action.payload
+			};
+		case PersonsActions.SELECT_SUCCESS:
+			return {
+				...state,
+				selectedPerson: action.payload
+			};
 		default:
 			return state;
 	}
@@ -42,4 +56,8 @@ export function selectSearchQuery(state: State): string {
 
 export function selectSearchResults(state: State): Person[] {
 	return state.searchResults;
+}
+
+export function selectSelectedPerson(state: State): Person {
+	return state.selectedPerson;
 }
