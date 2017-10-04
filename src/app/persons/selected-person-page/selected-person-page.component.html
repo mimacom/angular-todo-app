@@ -1,3 +1,3 @@
 <div class="d-flex flex-row justify-content-center">
-	<person-detail [person]="person | async" [isInvited]="isPersonInvited()" (invite)="invite($event)" (uninvite)="uninvite($event)"></person-detail>
+	<person-detail [person]="person | async" [isInvited]="isPersonInvited() | async" (invite)="invite($event)" (uninvite)="uninvite($event)"></person-detail>
 </div>
