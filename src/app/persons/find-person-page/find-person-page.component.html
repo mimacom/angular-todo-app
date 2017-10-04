@@ -1,2 +1,2 @@
-<person-search class="w-100" [query]="searchQuery" (search)="search($event)"></person-search>
-<person-overview-list [persons]="persons"></person-overview-list>
+<person-search class="w-100" [query]="searchQuery | async" (search)="search($event)"></person-search>
+<person-overview-list [persons]="persons | async"></person-overview-list>
